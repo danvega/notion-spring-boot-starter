@@ -1,0 +1,53 @@
+{
+  "groups": [
+    {
+      "name": "notion.api",
+      "type": "dev.danvega.notion.config.NotionProperties",
+      "sourceType": "dev.danvega.notion.config.NotionProperties"
+    }
+  ],
+  "properties": [
+    {
+      "name": "notion.api.base-url",
+      "type": "java.lang.String",
+      "description": "The base URL for the Notion API.",
+      "sourceType": "dev.danvega.notion.config.NotionProperties",
+      "defaultValue": "https:\/\/api.notion.com\/v1"
+    },
+    {
+      "name": "notion.api.connection-timeout",
+      "type": "java.lang.Integer",
+      "description": "Connection timeout in milliseconds.",
+      "sourceType": "dev.danvega.notion.config.NotionProperties",
+      "defaultValue": 10000
+    },
+    {
+      "name": "notion.api.key",
+      "type": "java.lang.String",
+      "description": "The API key (or integration token) for the Notion API.",
+      "sourceType": "dev.danvega.notion.config.NotionProperties"
+    },
+    {
+      "name": "notion.api.read-timeout",
+      "type": "java.lang.Integer",
+      "description": "Read timeout in milliseconds.",
+      "sourceType": "dev.danvega.notion.config.NotionProperties",
+      "defaultValue": 30000
+    },
+    {
+      "name": "notion.api.version",
+      "type": "java.lang.String",
+      "description": "The Notion API version to use.",
+      "sourceType": "dev.danvega.notion.config.NotionProperties",
+      "defaultValue": "2022-06-28"
+    },
+    {
+      "name": "notion.api.write-timeout",
+      "type": "java.lang.Integer",
+      "description": "Write timeout in milliseconds.",
+      "sourceType": "dev.danvega.notion.config.NotionProperties",
+      "defaultValue": 30000
+    }
+  ],
+  "hints": []
+}

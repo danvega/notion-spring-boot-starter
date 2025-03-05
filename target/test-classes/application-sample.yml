@@ -1,0 +1,10 @@
+spring:
+  main:
+    banner-mode: off
+
+# Set your actual Notion API key here or use environment variables
+notion:
+  api:
+    key: ${NOTION_API_KEY}
+    version: 2022-06-28
+    # Default baseUrl is already set to https://api.notion.com/v1
