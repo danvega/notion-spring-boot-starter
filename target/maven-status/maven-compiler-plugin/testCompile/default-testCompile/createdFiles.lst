@@ -1,6 +1,0 @@
-dev/danvega/notion/integration/TestApplication.class
-dev/danvega/notion/client/NotionClientTest.class
-dev/danvega/notion/integration/NotionIntegrationTest.class
-dev/danvega/notion/autoconfigure/NotionAutoConfigurationTest.class
-dev/danvega/notion/integration/NotionTestService.class
-dev/danvega/notion/sample/SampleNotionApplication.class

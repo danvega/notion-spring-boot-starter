@@ -1,9 +1,0 @@
-spring:
-  main:
-    banner-mode: off
-
-notion:
-  api:
-    key: test-api-key
-    version: 2022-06-28
-    baseUrl: http://localhost:8089/v1

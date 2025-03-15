@@ -1,6 +1,7 @@
 package dev.danvega.notion.integration;
 
 import dev.danvega.notion.model.block.Block;
+import dev.danvega.notion.model.block.content.ParagraphContent;
 import dev.danvega.notion.model.database.DatabaseQuery;
 import dev.danvega.notion.model.page.Page;
 import dev.danvega.notion.model.response.PaginatedResponse;
@@ -155,7 +156,7 @@ public class NotionIntegrationTest {
                 "  \"archived\": false,\n" +
                 "  \"has_children\": false,\n" +
                 "  \"type\": \"paragraph\",\n" +
-                "  \"paragraph\": { \"rich_text\": [] }\n" +
+                "  \"paragraph\": { \"type\": \"paragraph\", \"rich_text\": [] }\n" +
                 "}";
 
         stubFor(get(urlEqualTo("/v1/blocks/" + blockId))
@@ -174,9 +175,12 @@ public class NotionIntegrationTest {
         assertThat(block.getId()).isEqualTo(blockId);
         assertThat(block.getObjectType()).isEqualTo("block");
         assertThat(block.getType()).isEqualTo("paragraph");
-        // getHasChildren() might be null as we're now handling field mapping differently
-        // Just check it's not true
-        assertThat(block.getHasChildren() == null || !block.getHasChildren()).isTrue();
+        assertThat(block.getHasChildren()).isFalse();
+        
+        // Test the type-safe content
+        assertThat(block.getContent()).isNotNull();
+        assertThat(block.getContent()).isInstanceOf(ParagraphContent.class);
+        assertThat(block.getParagraphContent()).isNotNull();
 
         // Verify the request was made
         verify(getRequestedFor(urlEqualTo("/v1/blocks/" + blockId))
