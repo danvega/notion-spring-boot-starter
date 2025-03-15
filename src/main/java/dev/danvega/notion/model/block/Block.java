@@ -432,6 +432,51 @@ public class Block extends NotionObject {
     }
     
     /**
+     * Type-safe method to get content for bulleted list items.
+     *
+     * @return the bulleted list item content, or null if this is not a bulleted list item block
+     */
+    public BulletedListItemContent getBulletedListItemContent() {
+        return type != null && type.equals("bulleted_list_item") ? bulleted_list_item : null;
+    }
+    
+    /**
+     * Type-safe method to get content for numbered list items.
+     *
+     * @return the numbered list item content, or null if this is not a numbered list item block
+     */
+    public NumberedListItemContent getNumberedListItemContent() {
+        return type != null && type.equals("numbered_list_item") ? numbered_list_item : null;
+    }
+    
+    /**
+     * Type-safe method to get content for to-do items.
+     *
+     * @return the to-do content, or null if this is not a to-do block
+     */
+    public ToDoContent getToDoContent() {
+        return type != null && type.equals("to_do") ? to_do : null;
+    }
+    
+    /**
+     * Type-safe method to get content for code blocks.
+     *
+     * @return the code content, or null if this is not a code block
+     */
+    public CodeContent getCodeContent() {
+        return type != null && type.equals("code") ? code : null;
+    }
+    
+    /**
+     * Type-safe method to get content for image blocks.
+     *
+     * @return the image content, or null if this is not an image block
+     */
+    public ImageContent getImageContent() {
+        return type != null && type.equals("image") ? image : null;
+    }
+    
+    /**
      * Type-safe method to get rich text for any block type.
      *
      * @return the rich text, or null if this block doesn't have rich text

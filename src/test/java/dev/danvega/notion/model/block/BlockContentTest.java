@@ -80,7 +80,7 @@ public class BlockContentTest {
         assertThat(block.getType()).isEqualTo("bulleted_list_item");
         assertThat(block.getContent()).isInstanceOf(BulletedListItemContent.class);
         
-        BulletedListItemContent content = block.getBulleted_list_item();
+        BulletedListItemContent content = block.getBulletedListItemContent();
         assertThat(content).isNotNull();
         assertThat(content.getRichText()).hasSize(1);
         assertThat(content.getRichText().get(0).getPlainText()).isEqualTo(text);
@@ -98,7 +98,7 @@ public class BlockContentTest {
         assertThat(block.getType()).isEqualTo("numbered_list_item");
         assertThat(block.getContent()).isInstanceOf(NumberedListItemContent.class);
         
-        NumberedListItemContent content = block.getNumbered_list_item();
+        NumberedListItemContent content = block.getNumberedListItemContent();
         assertThat(content).isNotNull();
         assertThat(content.getRichText()).hasSize(1);
         assertThat(content.getRichText().get(0).getPlainText()).isEqualTo(text);
@@ -117,13 +117,13 @@ public class BlockContentTest {
         assertThat(uncheckedBlock.getType()).isEqualTo("to_do");
         assertThat(uncheckedBlock.getContent()).isInstanceOf(ToDoContent.class);
         
-        ToDoContent uncheckedContent = uncheckedBlock.getTo_do();
+        ToDoContent uncheckedContent = uncheckedBlock.getToDoContent();
         assertThat(uncheckedContent).isNotNull();
         assertThat(uncheckedContent.getRichText()).hasSize(1);
         assertThat(uncheckedContent.getRichText().get(0).getPlainText()).isEqualTo(text);
         assertThat(uncheckedContent.getChecked()).isFalse();
         
-        ToDoContent checkedContent = checkedBlock.getTo_do();
+        ToDoContent checkedContent = checkedBlock.getToDoContent();
         assertThat(checkedContent.getChecked()).isTrue();
     }
     
@@ -140,7 +140,7 @@ public class BlockContentTest {
         assertThat(block.getType()).isEqualTo("code");
         assertThat(block.getContent()).isInstanceOf(CodeContent.class);
         
-        CodeContent content = block.getCode();
+        CodeContent content = block.getCodeContent();
         assertThat(content).isNotNull();
         assertThat(content.getRichText()).hasSize(1);
         assertThat(content.getRichText().get(0).getPlainText()).isEqualTo(code);
@@ -159,7 +159,7 @@ public class BlockContentTest {
         assertThat(block.getType()).isEqualTo("image");
         assertThat(block.getContent()).isInstanceOf(ImageContent.class);
         
-        ImageContent content = block.getImage();
+        ImageContent content = block.getImageContent();
         assertThat(content).isNotNull();
         assertThat(content.getType()).isEqualTo(BlockType.IMAGE);
         assertThat(content.getExternal()).isNotNull();
