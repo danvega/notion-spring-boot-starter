@@ -57,9 +57,7 @@ public class ToDoContent extends BlockContent {
      * @return the to-do content
      */
     public static ToDoContent of(String text, boolean checked) {
-        List<RichText> richText = List.of(RichText.builder()
-                .text(new RichText.TextContent(text))
-                .build());
+        List<RichText> richText = RichText.listOf(text);
         return new ToDoContent(richText, checked);
     }
 

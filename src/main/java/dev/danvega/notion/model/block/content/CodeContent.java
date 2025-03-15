@@ -57,9 +57,7 @@ public class CodeContent extends BlockContent {
      * @return the code content
      */
     public static CodeContent of(String code, String language) {
-        List<RichText> richText = List.of(RichText.builder()
-                .text(new RichText.TextContent(code))
-                .build());
+        List<RichText> richText = RichText.listOf(code);
         return new CodeContent(richText, language);
     }
 

@@ -60,9 +60,7 @@ public class ParagraphContent extends BlockContent {
      * @return the paragraph content
      */
     public static ParagraphContent of(String text) {
-        List<RichText> richText = List.of(RichText.builder()
-                .text(new RichText.TextContent(text))
-                .build());
+        List<RichText> richText = RichText.listOf(text);
         return new ParagraphContent(richText);
     }
 

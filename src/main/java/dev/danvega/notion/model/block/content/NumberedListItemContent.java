@@ -49,9 +49,7 @@ public class NumberedListItemContent extends BlockContent {
      * @return the numbered list item content
      */
     public static NumberedListItemContent of(String text) {
-        List<RichText> richText = List.of(RichText.builder()
-                .text(new RichText.TextContent(text))
-                .build());
+        List<RichText> richText = RichText.listOf(text);
         return new NumberedListItemContent(richText);
     }
 

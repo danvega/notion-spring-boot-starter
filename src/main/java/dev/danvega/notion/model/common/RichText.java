@@ -194,6 +194,15 @@ public class RichText {
             return new RichText(type, text, annotations, plainText, href);
         }
     }
+    
+    /**
+     * Creates a new RichTextBuilder instance.
+     *
+     * @return a new builder
+     */
+    public static RichTextBuilder builder() {
+        return new RichTextBuilder();
+    }
 
     /**
      * Represents text content in a rich text object.

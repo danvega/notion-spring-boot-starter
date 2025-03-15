@@ -69,9 +69,7 @@ public class HeadingContent extends BlockContent {
             throw new IllegalArgumentException("Heading level must be 1, 2, or 3");
         }
         
-        List<RichText> richText = List.of(RichText.builder()
-                .text(new RichText.TextContent(text))
-                .build());
+        List<RichText> richText = RichText.listOf(text);
         return new HeadingContent(richText, level);
     }
 
