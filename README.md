@@ -98,6 +98,8 @@ Database newDatabase = databaseService.createDatabase(parent, title, properties)
 
 ### Working with Blocks
 
+#### Basic Block Operations
+
 ```java
 // Get a block
 Block block = blockService.getBlock("block_id");
@@ -113,6 +115,73 @@ Block updatedBlock = blockService.updateBlock("block_id", block);
 
 // Delete a block
 blockService.deleteBlock("block_id");
+```
+
+#### Creating Blocks with Typed Models
+
+The library provides strongly typed models for all Notion block types, making it easier to work with block content:
+
+```java
+// Using the BlockFactory for easy block creation
+import static dev.danvega.notion.model.block.BlockFactory.*;
+
+// Create blocks with different types
+Block paragraphBlock = paragraph("This is a paragraph text");
+Block headingBlock = heading("This is a heading", 1);
+Block bulletPoint = bulletedListItem("This is a bullet point");
+Block numberedItem = numberedListItem("This is a numbered item");
+Block todoItem = toDo("Task to complete", false);
+Block codeBlock = code("System.out.println(\"Hello World\");", "java");
+Block image = imageFromUrl("https://example.com/image.jpg");
+
+// Append multiple blocks at once
+List<Block> createdBlocks = blockService.appendBlocks(
+    "parent_id", 
+    heading("Document Title", 1),
+    paragraph("This is the first paragraph."),
+    bulletedListItem("Important point 1"),
+    bulletedListItem("Important point 2"),
+    code("var x = 42;", "javascript")
+);
+
+// Convenience methods
+Block heading = blockService.appendHeading("parent_id", "Section Title", 2);
+Block paragraph = blockService.appendParagraph("parent_id", "Paragraph text");
+Block todo = blockService.appendToDo("parent_id", "Buy groceries", false);
+
+// Create a complete document
+List<Block> document = blockService.createDocument(
+    "parent_id",
+    "Document Title",
+    "Document Subtitle",
+    "First paragraph with content.",
+    "Second paragraph with more details.",
+    "Conclusion paragraph."
+);
+```
+
+#### Type-Safe Access to Block Content
+
+```java
+// Get a block from the API
+Block block = blockService.getBlock("block_id");
+
+// Type-safe access to content based on block type
+if (block.getType().equals("paragraph")) {
+    ParagraphContent content = block.getParagraphContent();
+    List<RichText> richText = content.getRichText();
+    System.out.println("Paragraph text: " + richText.get(0).getPlainText());
+} else if (block.getType().startsWith("heading_")) {
+    HeadingContent content = block.getHeadingContent();
+    int level = content.getLevel();
+    System.out.println("Heading level: " + level);
+}
+
+// Generic method to access rich text from any block type
+List<RichText> text = block.getRichText();
+if (text != null) {
+    System.out.println("Block text: " + text.get(0).getPlainText());
+}
 ```
 
 ## Testing
